@@ -67,7 +67,7 @@ void ViewerOpenFileCommand::execute(QGraphicsManagaView *viewer)
     }
     QFileDialog dialog(0,("Open File"),
                        path,
-                       QObject::tr("Supported types (*.png *.jpg *.jpeg *.bmp *.zip *.rar *.7z)"));
+                       QObject::tr("Supported types (*.png *.jpg *.jpeg *.bmp *.webp *.zip *.rar *.7z)"));
     dialog.setOption(QFileDialog::DontUseNativeDialog);
     dialog.setViewMode(QFileDialog::Detail);
     dialog.setFileMode(QFileDialog::ExistingFile);
@@ -88,10 +88,10 @@ REGISTER_COMMAND(ViewerToggleHideCommand)
 void ViewerToggleHideCommand::execute(QGraphicsManagaView *viewer)
 {
 
-    if(viewer->isHidden())
-        viewer->show();
-    else
-        viewer->hide();
+    // if(viewer->isHidden())
+    //     viewer->show();
+    // else
+    //     viewer->hide();
 
 }
 

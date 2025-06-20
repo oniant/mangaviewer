@@ -16,7 +16,7 @@ ZipFileLoader::~ZipFileLoader()
 
 bool ZipFileLoader::isZipFile(QString ext)
 {
-    return ext=="zip"||ext=="rar"||ext=="7z";
+    return ext=="zip"||ext=="rar"||ext=="7z"||ext=="cbz"||ext=="cbr";
 }
 
 QStringList ZipFileLoader::fileList()

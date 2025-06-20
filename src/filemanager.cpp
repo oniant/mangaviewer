@@ -227,7 +227,7 @@ int FileManager::get(QString fileName)
 bool FileManager::isSuffixAcceptable(QString suffix)
 {
     QString lowersuffix=suffix.toLower();
-    return (lowersuffix=="jpeg"||lowersuffix=="jpg"||lowersuffix=="png"||lowersuffix=="bmp");
+    return (lowersuffix=="jpeg"||lowersuffix=="jpg"||lowersuffix=="png"||lowersuffix=="bmp"||lowersuffix=="webp");
 }
 
 int FileManager::indexOf(QString filePath)

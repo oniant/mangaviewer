@@ -153,7 +153,7 @@ FORMS    +=  qgraphicsmanagaview.ui \
 
 INCLUDEPATH+= ./include
 
-include(qxtglobalshortcut/qxtglobalshortcut.pri)
+# include(qxtglobalshortcut/qxtglobalshortcut.pri)
 
 RESOURCES += \
     resources.qrc

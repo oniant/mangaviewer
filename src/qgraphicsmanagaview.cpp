@@ -485,9 +485,13 @@ void QGraphicsManagaView::perviousPage()
 
 int QGraphicsManagaView::gotoPage(int page)
 {
+    if(page>>1 == -1) {
+        return 0;
+    }
     scrollItem->scrollToCell(page,0,0,0);
     scrollItem->updateView();
     updateProgressBar();
+    return 0;
 }
 
 void QGraphicsManagaView::dropEvent(QDropEvent *event)

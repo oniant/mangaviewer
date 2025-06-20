@@ -1,5 +1,6 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
+DEFINES += QXT_STATIC
 
 HEADERS += $$PWD/qxtglobal.h \
            $$PWD/qxtglobalshortcut.h \
