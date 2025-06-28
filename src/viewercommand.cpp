@@ -144,7 +144,7 @@ REGISTER_COMMAND(ViewerCloseCommand)
 void ViewerCloseCommand::execute(QGraphicsManagaView *viewer)
 {
     QMessageBox msgBox;
-    msgBox.setIconPixmap(QPixmap(":/icon/images/icon.jpg"));
+    // msgBox.setIconPixmap(QPixmap(":/icon/images/logo.png"));
     msgBox.setWindowTitle("Confirm");
     msgBox.setText("Do you want to exit MangaViewer?");
     msgBox.setInformativeText("");
