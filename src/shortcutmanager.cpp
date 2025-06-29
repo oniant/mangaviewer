@@ -4,15 +4,16 @@
 #include <QFile>
 #include "commandregistry.h"
 #include <QDebug>
-// #include "qxtglobalshortcut.h"
+#include "QHotKey"
 
 ShortcutManager::ShortcutManager():mShortcuts(),mGlobalShortcuts()
 {
 }
 
-void ShortcutManager::globalShortcutActived(QxtGlobalShortcut *shortcut)
+void ShortcutManager::globalShortcutActived()
 {
-    if(mGlobalShortcuts.contains(shortcut))
+    QHotkey* shortcut = qobject_cast<QHotkey*>(sender());
+    if(shortcut && mGlobalShortcuts.contains(shortcut))
         mGlobalShortcuts[shortcut]->execute(mViewer);
 }
 
@@ -44,26 +45,26 @@ void ShortcutManager::loadFromXmlFile(QString fileName)
         {
             if(!key.text().isEmpty())
             {
-                // if(key.hasAttribute("global"))
-                // {
-                //     QString globalShortcut=key.text();
-                //     QxtGlobalShortcut *shortCut=new QxtGlobalShortcut();
-                //     QKeySequence seq(globalShortcut);
-                //     bool ok=shortCut->setShortcut(seq);
-                //     if(ok)
-                //     {
-                //         qDebug()<<"register success:"<<seq;
-                //         mGlobalShortcuts[shortCut]=CommandRegistry::get("Viewer"+command+"Command");
-                //         QObject::connect(shortCut,SIGNAL(activated(QxtGlobalShortcut*)),this,SLOT(globalShortcutActived(QxtGlobalShortcut*)));
-                //     }
-                //     else
-                //     {
-                //         qDebug()<<"register failed:"<<seq;
-                //        emit registerGlobalShortcutFailed(seq);
-                //     }
+                if(key.hasAttribute("global"))
+                {
+                    QString globalShortcut=key.text();
+                    QHotkey *shortCut=new QHotkey();
+                    QKeySequence seq(globalShortcut);
+                    bool ok=shortCut->setShortcut(seq, true);
+                    if(ok)
+                    {
+                        qDebug()<<"register success:"<<seq;
+                        mGlobalShortcuts[shortCut]=CommandRegistry::get("Viewer"+command+"Command");
+                        QObject::connect(shortCut,SIGNAL(activated()),this,SLOT(globalShortcutActived()));
+                    }
+                    else
+                    {
+                        qDebug()<<"register failed:"<<seq;
+                       emit registerGlobalShortcutFailed(seq);
+                    }
 
-                // }
-                // else
+                }
+                else
                 {
                     mShortcuts[key.text().toUpper()]=CommandRegistry::get("Viewer"+command+"Command");
                 }

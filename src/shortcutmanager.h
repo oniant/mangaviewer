@@ -7,7 +7,7 @@
 #include <QtXml/QDomDocument>
 #include "viewercommand.h"
 #include <QKeySequence>
-class QxtGlobalShortcut;
+class QHotkey;
 class QGraphicsManagaView;
 class ShortcutManager:public QObject,public Singleton<ShortcutManager>
 {
@@ -21,12 +21,12 @@ public:
     ShortcutManager();
 private:
     QMap<QString,ViewerCommand*> mShortcuts;
-    QMap<QxtGlobalShortcut*,ViewerCommand*> mGlobalShortcuts;
+    QMap<QHotkey*,ViewerCommand*> mGlobalShortcuts;
     QGraphicsManagaView *mViewer;
 Q_SIGNALS:
     void registerGlobalShortcutFailed(QKeySequence& sequence);
 private slots:
-    void globalShortcutActived(QxtGlobalShortcut* shortcut);
+    void globalShortcutActived();
 };
 
 #endif // SHORTCUTMANAGER_H

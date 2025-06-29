@@ -153,7 +153,7 @@ FORMS    +=  qgraphicsmanagaview.ui \
 
 INCLUDEPATH+= ./include
 
-# include(qxtglobalshortcut/qxtglobalshortcut.pri)
+include(qhotkey.pri)
 
 RESOURCES += \
     resources.qrc
@@ -162,5 +162,4 @@ APP_QML_FILES.files = resources/readme.html resources/settings.ini resources/sho
 APP_QML_FILES.path = Contents/MacOS
 QMAKE_BUNDLE_DATA += APP_QML_FILES
 
-# ICON = images/icon.icns
 RC_ICONS = images/logo.ico

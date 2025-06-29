@@ -74,6 +74,8 @@ void ViewerOpenFileCommand::execute(QGraphicsManagaView *viewer)
     dialog.selectFile(file);
 
     dialog.setSidebarUrls(urls);
+    if(viewer->isHidden())
+        viewer->show();
     if(dialog.exec())
     {
         QStringList dir =dialog.selectedFiles();
@@ -88,10 +90,10 @@ REGISTER_COMMAND(ViewerToggleHideCommand)
 void ViewerToggleHideCommand::execute(QGraphicsManagaView *viewer)
 {
 
-    // if(viewer->isHidden())
-    //     viewer->show();
-    // else
-    //     viewer->hide();
+    if(viewer->isHidden())
+        viewer->show();
+    else
+        viewer->hide();
 
 }
 
